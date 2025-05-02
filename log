@@ -26,3 +26,15 @@ Fri, May  2, 2025 11:22:17 AM:
  tests:  8|5
 total_score: 15/70
 48f656d
+Fri, May  2, 2025 12:45:14 PM: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Compilation failed
+C:\Users\pedri\AppData\Local\Temp\ccbMeAJk.o: In function `erase_test1':
+C:\Users\pedri\Desktop\U\estructura de datos\lab-4-rboles-binarios-de-b-squeda-mafritx/test.c:267: undefined reference to `eraseTreeMap'
+C:\Users\pedri\AppData\Local\Temp\ccbMeAJk.o: In function `erase_test2':
+C:\Users\pedri\Desktop\U\estructura de datos\lab-4-rboles-binarios-de-b-squeda-mafritx/test.c:281: undefined reference to `eraseTreeMap'
+C:\Users\pedri\AppData\Local\Temp\ccbMeAJk.o: In function `erase_test3':
+C:\Users\pedri\Desktop\U\estructura de datos\lab-4-rboles-binarios-de-b-squeda-mafritx/test.c:302: undefined reference to `eraseTreeMap'
+collect2.exe: error: ld returned 1 exit status
+9ea54fb
