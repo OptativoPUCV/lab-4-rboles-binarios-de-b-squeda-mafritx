@@ -93,42 +93,47 @@ TreeNode * minimum(TreeNode * x){
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (tree == NULL || node == NULL) return;
     
-    TreeNode * parent = node->parent;
-    
-    
+    // Case 1: Node has no children
     if (node->left == NULL && node->right == NULL) {
-        if (parent == NULL) {
+        if (node->parent == NULL) {
             tree->root = NULL;
-        } else if (parent->left == node) {
-            parent->left = NULL;
         } else {
-            parent->right = NULL;
+            if (node->parent->left == node) {
+                node->parent->left = NULL;
+            } else {
+                node->parent->right = NULL;
+            }
         }
         free(node->pair);
         free(node);
+        return;
     }
     
-    else if (node->left == NULL || node->right == NULL) {
+    // Case 2: Node has one child
+    if (node->left == NULL || node->right == NULL) {
         TreeNode * child = (node->left != NULL) ? node->left : node->right;
         
-        if (parent == NULL) {
+        if (node->parent == NULL) {
             tree->root = child;
-        } else if (parent->left == node) {
-            parent->left = child;
         } else {
-            parent->right = child;
+            if (node->parent->left == node) {
+                node->parent->left = child;
+            } else {
+                node->parent->right = child;
+            }
         }
-        child->parent = parent;
+        child->parent = node->parent;
+        
         free(node->pair);
         free(node);
+        return;
     }
     
-    else {
-        TreeNode * minRight = minimum(node->right);
-        node->pair->key = minRight->pair->key;
-        node->pair->value = minRight->pair->value;
-        removeNode(tree, minRight);
-    }
+    // Case 3: Node has two children
+    TreeNode * minRight = minimum(node->right);
+    node->pair->key = minRight->pair->key;
+    node->pair->value = minRight->pair->value;
+    removeNode(tree, minRight);
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
