@@ -38,3 +38,9 @@ C:\Users\pedri\AppData\Local\Temp\ccbMeAJk.o: In function `erase_test3':
 C:\Users\pedri\Desktop\U\estructura de datos\lab-4-rboles-binarios-de-b-squeda-mafritx/test.c:302: undefined reference to `eraseTreeMap'
 collect2.exe: error: ld returned 1 exit status
 9ea54fb
+Fri, May  2, 2025 12:52:25 PM: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  8|5
+total_score: 15/70
+668139c
