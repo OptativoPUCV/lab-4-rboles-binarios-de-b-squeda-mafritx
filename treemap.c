@@ -61,7 +61,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     while (current != NULL) {
         parent = current;
         if (is_equal(tree, key, current->pair->key)) {
-            return; // Key already exists
+            return;
         } else if (tree->lower_than(key, current->pair->key)) {
             current = current->left;
         } else {
@@ -93,7 +93,6 @@ TreeNode * minimum(TreeNode * x){
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (tree == NULL || node == NULL) return;
     
-    // Case 1: Node has no children
     if (node->left == NULL && node->right == NULL) {
         if (node->parent == NULL) {
             tree->root = NULL;
@@ -109,7 +108,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         return;
     }
     
-    // Case 2: Node has one child
     if (node->left == NULL || node->right == NULL) {
         TreeNode * child = (node->left != NULL) ? node->left : node->right;
         
@@ -129,7 +127,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         return;
     }
     
-    // Case 3: Node has two children
     TreeNode * minRight = minimum(node->right);
     node->pair->key = minRight->pair->key;
     node->pair->value = minRight->pair->value;
@@ -210,14 +207,12 @@ Pair * nextTreeMap(TreeMap * tree) {
     
     TreeNode * current = tree->current;
     
-    // Case 1: Current has right child
     if (current->right != NULL) {
         TreeNode * minRight = minimum(current->right);
         tree->current = minRight;
         return minRight->pair;
     }
     
-    // Case 2: Current has no right child
     TreeNode * parent = current->parent;
     while (parent != NULL && current == parent->right) {
         current = parent;
